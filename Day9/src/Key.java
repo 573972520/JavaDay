@@ -30,7 +30,7 @@ public class Key implements Runnable {
 			}
 			//System.out.println(kc);
 			*/
-			/*
+			
 		    //控制精灵走动
 			int marioNum = 0;
 			GameCore.createSprite(marioNum, "mario");
@@ -72,7 +72,7 @@ public class Key implements Runnable {
 				}
 				GameCore.pause(10);
 			}
-			*/
+			
 			
 			
 		}
