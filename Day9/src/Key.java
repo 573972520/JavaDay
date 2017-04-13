@@ -8,7 +8,7 @@ import com.rupeng.game.GameCore;
 public class Key implements Runnable {
 
 
-	private static final int DOWN_Key = 40; //定义一个常量DOWN_Key，代表向下按键
+	//private static final int DOWN_Key = 40; //定义一个常量DOWN_Key，代表向下按键
 	public void run() {
 		// TODO Auto-generated method stub
 		
