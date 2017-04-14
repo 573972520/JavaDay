@@ -160,7 +160,7 @@ public class EatCoinGameUpdate implements Runnable {
 			}
 			
 			long currentMS = System.currentTimeMillis();
-			long leftSeconds = 12-(currentMS-startMS)/1000;
+			long leftSeconds = 40-(currentMS-startMS)/1000;
 			GameCore.setText(leftTimeNum, "»¹Ê£"+leftSeconds+"Ãë");
 			if (leftSeconds > 0&&leftSeconds <=10) {
 				GameCore.setTextColor(leftTimeNum, leftSeconds%2==0?Color.RED:Color.black);
@@ -177,6 +177,9 @@ public class EatCoinGameUpdate implements Runnable {
 			GameCore.pause(0);
 		
 				}
+			
+			
+			
 			}
 		
 		
