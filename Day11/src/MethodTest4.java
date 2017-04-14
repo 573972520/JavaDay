@@ -100,7 +100,12 @@ public class MethodTest4
 		System.out.println(sum);
 		String s ="abc";
 		System.out.println(newString(s, 3));
-				
+		
+		//把方法的返回值继续作为参数传递
+		String s1 = newString("ali", arraySum(new int[] {1,2,3}));
+		System.out.println(s1);
+		
+		System.out.println(newString("bab", arraySum(new int[] {1,2,5})));
 	}
 
 }
