@@ -39,28 +39,36 @@ public class Test1 implements Runnable
 		GameCore.playSpriteAnimate(girlNum, "walk", true);
 		*/
 		
-		/*
+		
 		RPSprite mario = new RPSprite("mario");
 		mario.setPosition(100, 100);
 		mario.playAnimate("walk");
-		mario.moveRight(500);
-		mario.moveLeft(200);
-		mario.moveDown(200);
-		mario.moveUp(100);
+		
+
+		
+//		mario.moveRight(500);
+//		mario.moveLeft(200);
+//		mario.moveDown(200);
+//		mario.moveUp(100);
+		
+		/*
 		RPSprite girl = new RPSprite("girl");
 //		girl.setPosition(500, 300);
 		girl.playAnimate("ti");
 		*/
 		
+		/*
 		RPText test = new RPText("8sdfsdf8");
 		test.textFontSize(50);
 		test.textPosition(100, 250);
 		test.textColor(Color.red);
 		RPImages imageTest = new RPImages("1.jpg");
 		imageTest.imagePosition(55, 100);
+		*/
 		while(true)
 		{
-			GameCore.pause(10);
+			mario.moveSprite();
+			GameCore.pause(5);
 		}
 		
 		

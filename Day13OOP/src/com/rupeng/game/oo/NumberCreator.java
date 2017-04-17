@@ -11,7 +11,6 @@ public class NumberCreator
 	{
 		
 	}
-	
 	private int number;
 	public int createNumber()
 	{

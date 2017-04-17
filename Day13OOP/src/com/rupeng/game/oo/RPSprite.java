@@ -2,7 +2,8 @@ package com.rupeng.game.oo;
 
 import java.awt.Dimension;
 import java.awt.Point;
-
+import java.awt.RenderingHints.Key;
+import java.awt.event.KeyEvent;
 
 import com.rupeng.game.GameCore;
 
@@ -103,7 +104,7 @@ public class RPSprite
 				Point pos = getPosition();
 				int x = pos.x;
 				int y = pos.y;
-				y++;
+				y--;
 				setPosition(x, y);
 			}
 		}
@@ -122,10 +123,45 @@ public class RPSprite
 				Point pos = getPosition();
 				int x = pos.x;
 				int y = pos.y;
-				y--;
+				y++;
 				setPosition(x, y);
 			}
 		}
 	}
+	public void moveSprite()
+	{
+		int keyCode = GameCore.getPressedKeyCode();
+		Point pos = getPosition();
+		int x = pos.x;
+		int y = pos.y;
+		if (keyCode == KeyEvent.VK_LEFT)
+		{
+			setFlipX(false);
+			x--;
+			setPosition(x, y);
+		}
+		if (keyCode == KeyEvent.VK_RIGHT)
+		{
+			setFlipX(true);
+			x++;
+			setPosition(x, y);
+		}
+		if (keyCode == KeyEvent.VK_UP)
+		{
+			y--;
+			setPosition(x, y);
+		}
+		if (keyCode == KeyEvent.VK_DOWN)
+		{
+			y++;
+			setPosition(x, y);
+		}
+		if (keyCode == KeyEvent.VK_SPACE )
+		{
+			moveUp(50);
+			moveDown(50);
+		}
+	}
+
 
 }
