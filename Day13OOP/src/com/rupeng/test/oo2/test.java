@@ -4,6 +4,7 @@ public class test
 {
 	public static void main(String[] args)
 	{
+		/*
 		son s1 = new son();
 		s1.setAge(55);
 		s1.setName("carl");
@@ -20,5 +21,8 @@ public class test
 		s1.sayHelloSon();
 		
 		//多个对象之间的非static成员变量是独立的
+		*/
+		son s1 = new son();
+		s1.开金库();
 	}
 }

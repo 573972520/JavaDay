@@ -16,6 +16,7 @@ public class son2  extends father
 	
 	public void sayHelloson2()
 	{
+		this.开金库();
 		System.out.println("大家好，我的年龄是"+this.getAge()+"我的身高是"+this.height);
 		AA++;
 		System.out.println("son2 AA is"+AA);
