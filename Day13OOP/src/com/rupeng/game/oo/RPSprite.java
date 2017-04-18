@@ -51,7 +51,10 @@ public class RPSprite
 	{
 		GameCore.setSpriteFlipY(this.number, isFlipY);
 	}
-
+	public void show()
+	{
+		GameCore.showSprite(this.number);
+	}
 	public void moveRight(int moveCount)
 	{
 		if (moveCount <= 0)
