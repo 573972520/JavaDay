@@ -6,4 +6,8 @@ public class earthMan
 	{
 		System.out.println("大家好，我是地球人");
 	}
+	public void eat()
+	{
+		System.out.println("eat eat");
+	}
 }
