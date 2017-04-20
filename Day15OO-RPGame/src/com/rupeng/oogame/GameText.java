@@ -1,11 +1,12 @@
 package com.rupeng.oogame;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Point;
 
 import com.rupeng.game.GameCore;
 
-public class GameText extends GameObject
+public class GameText extends GameRect
 {
 	private int number;
 	private String text;
@@ -45,7 +46,13 @@ public class GameText extends GameObject
 		// TODO Auto-generated method stub
 		GameCore.setTextPosition(this.number, x, y);
 	}
+	@Override
+	public Dimension getSize()
+	{
+		// TODO Auto-generated method stub
+		return GameCore.getTextSize(this.number);
 	
+	}
 	//  文本自己特有的方法
 	public void setText(String txt)
 	{

@@ -2,10 +2,11 @@ package com.rupeng.oogame;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 
 import com.rupeng.game.GameCore;
 
-public class GameSprite extends GameObject
+public class GameSprite extends GameRect
 {
 	private int number;
 	public  GameSprite(String spriteName)
@@ -72,8 +73,32 @@ public class GameSprite extends GameObject
 	{
 		GameCore.setSpriteFlipY(this.number, true);
 	}
+	@Override
 	public Dimension getSize()
 	{
 		return GameCore.getSpriteSize(this.number);
+	}
+	
+	public void move()
+	{
+		int keyCode = GameCore.getPressedKeyCode();
+		if (keyCode == KeyEvent.VK_LEFT)
+		{
+			this.setFlipX(false);
+			this.moveLeft();
+		}
+		if (keyCode == KeyEvent.VK_RIGHT)
+		{
+			this.setFlipX();
+			this.moveRight();
+		}
+		if (keyCode == KeyEvent.VK_UP)
+		{
+			this.moveUp();
+		}
+		if (keyCode == KeyEvent.VK_DOWN)
+		{
+			this.moveDown();
+		}
 	}
 }

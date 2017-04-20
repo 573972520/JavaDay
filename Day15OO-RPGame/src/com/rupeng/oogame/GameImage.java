@@ -1,20 +1,27 @@
 package com.rupeng.oogame;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 import com.rupeng.game.GameCore;
 
-public class GameImage extends GameObject
+public class GameImage extends GameRect
 {
 	private int number;
 	public  GameImage(String imgName)
 	{
 		this.number = NumberCreator.getCreator().createNumber();
-		GameCore.setImageSource(this.number, imgName);
+		GameCore.createImage(this.number, imgName);
 	}
 	public GameImage()
 	{
 		this("");
+	}
+	@Override
+	public Dimension getSize()
+	{
+		// TODO Auto-generated method stub
+		return GameCore.getImageSize(this.number);
 	}
 	@Override
 	public void hide()
