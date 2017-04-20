@@ -93,15 +93,45 @@ public class HitBricks implements Runnable
     @Override
     public void run()
     {
-        GameImage imgBoard = new GameImage("2.jpg");
-        imgBoard.setPosition(400, 500);
+    	GameCore.setGameSize(1290, 800);
+        GameImage imgBoard = new GameImage("1.png");
+        imgBoard.setPosition(400, 720);
          
         GameSprite spriteBall = new GameSprite("ball1");
         spriteBall.setPosition(100, 400);
         spriteBall.playAnimate("rotate");
         int ballVX=GameCore.rand(1,4);//x方向的分速度
         int ballVY =-5;//y方向的分速度     
-         
+        
+        BrickInfo[][] bricks = new BrickInfo[4][10];
+        for (int i = 0; i < bricks.length; i++)
+		{
+        	BrickInfo[] brickRows = bricks[i];
+			for (int j = 0; j < brickRows.length; j++)
+			{
+				brickRows[j] = new BrickInfo();
+				//GameCore.rand(0, 2)==0
+				 //GameCore.rand(0, 2)返回一个>=0并且<2的随机数
+		        //这个数如果是0，就有砖，否则就没有
+				brickRows[j].setHasBrick(GameCore.rand(0, 2)==0);
+			}
+		}
+        
+        for (int i = 0; i < bricks.length; i++)
+		{
+        	BrickInfo[] brickRows = bricks[i];
+			for (int j = 0; j < brickRows.length; j++)
+			{
+				BrickInfo brickInfo = brickRows[j];
+				if (brickInfo.isHasBrick())//如果这个位置有砖，则把砖显示出来
+				{
+					GameImage imgBrick = new GameImage("2.jpg");
+					imgBrick.setPosition(j*129, i*64);
+					brickInfo.setImgBrick(imgBrick);
+				}
+			}
+		}
+        
         while(true)
         {
             int keycode = GameCore.getPressedKeyCode();
@@ -122,11 +152,11 @@ public class HitBricks implements Runnable
             yBall +=ballVY*1;
              
             spriteBall.setPosition(xBall, yBall);
-            if(xBall==0)//碰到了左边
+            if(xBall==20)//碰到了左边
             {
                 ballVX=-ballVX;//横向反弹
             }
-            if(xBall==GameCore.getGameSize().width)//胖到了右边
+            if(xBall==GameCore.getGameSize().width-20)//到了右边
             {
                 ballVX=-ballVX;//横向反弹
             }
@@ -144,9 +174,21 @@ public class HitBricks implements Runnable
             	System.out.println("1");
                 ballVY=-ballVY;
             }
-             
-                         
-            GameCore.pause(5);
+            //再判断是否和某块砖相撞，如果是的话，把砖隐藏，把球纵向反弹
+             for (BrickInfo[] brickRow : bricks)
+			{
+				for (BrickInfo brick : brickRow)
+				{
+					//如果砖还没有死，并且和球相撞了
+					if (brick.isHasBrick()&&brick.isAlive()&&brick.getImgBrick().isIntersectWith(spriteBall))
+					{
+						brick.setAlive(false);//死掉
+						brick.getImgBrick().hide();//消失
+						ballVY=-ballVY;
+					}
+				}
+			}
+            GameCore.pause(1);
         }
          
          
@@ -158,5 +200,44 @@ public class HitBricks implements Runnable
         GameCore.start(new HitBricks());
     }
  
+}
+
+class BrickInfo  
+{
+	boolean hasBrick; //这个位置有没有砖
+	boolean isAlive;  //砖块是不是活着
+	GameImage imgBrick;
+	public  BrickInfo()
+	{
+		this.imgBrick = new GameImage("2.jpg");
+		this.isAlive = true;
+	}
+	public boolean isHasBrick()
+	{
+		return hasBrick;
+	}
+	public void setHasBrick(boolean hasBrick)
+	{
+		this.hasBrick = hasBrick;
+	}
+	public boolean isAlive()
+	{
+		return isAlive;
+	}
+	public void setAlive(boolean isAlive)
+	{
+		this.isAlive = isAlive;
+	}
+	public GameImage getImgBrick()
+	{
+		return this.imgBrick;
+	}
+	public void setImgBrick(GameImage imgBrick)
+	{
+		this.imgBrick = imgBrick;
+	}
+	
+
+	
 }
 
