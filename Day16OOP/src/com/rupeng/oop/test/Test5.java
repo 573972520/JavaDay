@@ -8,6 +8,19 @@ public class Test5
 		// TODO Auto-generated method stub
 		int i = 1+2;
 		System.out.println(i);
+		
+		earthMan d1 = new earthMan()
+		{
+			
+			@Override
+			public void speak()
+			{
+				// TODO Auto-generated method stub
+				System.out.println(i);
+			}
+		};
 	}
 
 }
+
+
