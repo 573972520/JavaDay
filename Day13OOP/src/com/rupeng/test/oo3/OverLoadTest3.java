@@ -25,6 +25,7 @@ public class OverLoadTest3
 	{
 		System.out.println("int d="+d);
 	}
+	
 	static void f2(Object obj)
 	{
 		System.out.println("obj");
